@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stock Growth Calculator</title>
+    <link rel="stylesheet" href= "{% static 'css/main.css' %}" />
+    
+</head>
+
+<body>
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Stock Growth
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div>
+                    <ol>
+                        <li>
+                             Enter a stock such as APPL TSLA
+                        </li>
+                        <li>
+                            Enter a date of purchase
+                        </li>
+                    </ol> 
+                
+            </div>
+            <div class="columns">
+
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <p style= "padding: 0 7em 2em 0"> Add Stock Information:
+                        
+                        </p>
+                        <div class="field has-addons">
+
+                            <div class="control is-expanded" >
+                                <!--<input class="input" type="text" placeholder="Stock Symbol"> -->
+                                {{ form.as_p }}
+            
+                            </div>
+                        </div>
+                        <div class = "control">
+                            <button type = "submit" class="button is-info">
+                                Add Stock
+                            </button>
+
+                        </div>
+                    </form>
+
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for dictionary in stock_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-50x50">
+                                    <!-- <img src="http://openweathermap.org/img/w/10d.png" alt="Image"> -->
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <br> 
+                                        <span class="title">{{ dictionary.symbol }} </span>
+                                        <br> This stock would have grown to: 
+                                        <br>
+                                        <span class="subtitle">${{ dictionary.growth }}</span>
+                                        <br> 
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <a href="https://datatibute.com">Visit My Website</a>
+    </footer>
+</body>
+
+</html>
