@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Stock Growth Calculator</title>
-    <link rel="stylesheet" href= "{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href= "{% static '/css/main.css' %}" />
     
 </head>
 
@@ -29,10 +29,13 @@
             <div>
                     <ol>
                         <li>
-                             Enter a stock such as APPL TSLA
+                            Enter stock ticker such as TSLA (Tesla)
                         </li>
                         <li>
-                            Enter a date of purchase
+                            Enter date of purchase, default: Jan 1 2000
+                        </li>
+                        <li>
+                            Enter intial investment, default: $10000
                         </li>
                     </ol> 
                 
@@ -84,9 +87,11 @@
                                     <p>
                                         <br> 
                                         <span class="title">{{ dictionary.symbol }} </span>
-                                        <br> This stock would have grown to: 
+                                        <br> {{dictionary.symbol}} would have grown to: 
                                         <br>
                                         <span class="subtitle">${{ dictionary.growth }}</span>
+                                        <br> with a {{dictionary.investment}} intial investment purchased on {{dictionary.purchased}}
+                                        <br>
                                         <br> 
                                     </p>
                                 </div>
@@ -99,7 +104,7 @@
         </div>
     </section>
     <footer class="footer">
-        <a href="https://datatibute.com">Visit My Website</a>
+        <a href="https://datatribute.com">Visit My Website</a>
     </footer>
 </body>
 
